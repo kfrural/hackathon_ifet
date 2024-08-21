@@ -18,29 +18,29 @@ const Refeitorio: React.FC = () => {
 
   const handleGoBack = () => {
     navigation.goBack();
-};
+  };
 
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={handleGoBack}>
         <Image
-        source={require('../../assets/Return.png')}
-        style={styles.img}
-      />
+          source={require('../../assets/Return.png')}
+          style={styles.img}
+        />
       </TouchableOpacity>
       <View style={styles.base}>
-      <Text style={styles.title}>Refeitorio</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Informe a quantidade"
-        value={qtd}
-        onChangeText={setQtd}
-        keyboardType="numeric"
-      />
-      <Text style={styles.totalText}>Valor a ser pago: R$ {totalValue.toFixed(2)}</Text>
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Pagar</Text>
-      </TouchableOpacity>
+        <Text style={styles.title}>Refeitorio</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="Informe a quantidade"
+          value={qtd}
+          onChangeText={setQtd}
+          keyboardType="numeric"
+        />
+        <Text style={styles.totalText}>Valor a ser pago: R$ {totalValue.toFixed(2)}</Text>
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+          <Text style={styles.buttonText}>Pagar</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
