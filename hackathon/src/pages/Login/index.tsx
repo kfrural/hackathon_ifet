@@ -1,14 +1,44 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+//import { supabase } from '../../banco_de_dados/service/supabase';
+//import { useUser } from '../../auth/UserContext';
 import styles from './styles';
 
 const LoginScreen: React.FC = () => {
   const [matricula, setMatricula] = useState('');
   const [senha, setSenha] = useState('');
+  const navigation = useNavigation();
+ // const { setUser } = useUser();
 
-  const handleLogin = () => {
-    //aqui entra o cod para autenticar o usuario, tenho um no meu proj acho q consigo aproveitar
-    Alert.alert('Login', `Matrícula: ${matricula}\nSenha: ${senha}`);
+  const handleLogin = async () => {
+    {/*try {
+    } const { data, error } = await supabase
+        .from('usuarios')
+        .select('*')
+        .eq('matricula', matricula)
+        .eq('senha', senha)
+        .single();
+
+      if (error) {
+        Alert.alert('Erro', 'Erro ao fazer login: ' + error.message);
+        console.error('Erro ao fazer login:', error.message);
+      } else if (data) {
+        const user = {
+          id: data.id,
+        };
+        setUser(user);
+        navigation.navigate('Home', { userId: user.id });
+        console.log('ID do usuário:', user.id);
+      } else {
+        Alert.alert('Erro', 'Usuário não encontrado');
+        console.log('Usuário não encontrado');
+      }
+    } catch (error) {
+      Alert.alert('Erro', 'Erro ao fazer login: ' + error.message);
+      console.error('Erro ao fazer login:', error);
+    }*/}
+    navigation.navigate('Home');
   };
 
   return (

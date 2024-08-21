@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import styles from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 const Home: React.FC = () => {
   const [matricula, setMatricula] = useState('');
   const [senha, setSenha] = useState('');
+  const navigation = useNavigation();
 
   const handleRefeitorio = () => {
-    Alert.alert('Refeição', `Você escolheu recarregar tickets para o refeitório.`);
-    setMatricula('Refeitorio');
+    navigation.navigate('Refeitorio');
   };
 
   const handleOnibus = () => {
-    Alert.alert('Ônibus', `Você escolheu recarregar tickets para o ônibus.`);
-    setSenha('Onibus');
+    navigation.navigate('Onibus');
   };
 
   return (

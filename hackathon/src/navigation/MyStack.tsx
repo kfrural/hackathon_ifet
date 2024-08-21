@@ -14,7 +14,7 @@ const Stack = createNativeStackNavigator();
 
 function MyStack() {
     return (
-        <Stack.Navigator initialRouteName="Home" //AQUI TEM QUE FICAR Index TO TIRANDO PRA NAO RODAR VARIAAS VEZES
+        <Stack.Navigator initialRouteName="Index" //AQUI TEM QUE FICAR Index TO TIRANDO PRA NAO RODAR VARIAAS VEZES
             screenOptions={{ headerShown: false }}
         >
             <Stack.Screen name="Index" component={Index} />
