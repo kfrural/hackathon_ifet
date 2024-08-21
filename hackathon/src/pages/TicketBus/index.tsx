@@ -11,8 +11,8 @@ const TicketBus: React.FC = () => {
   
     const totalValue = parseFloat(qtd) * ticketPrice;
   
-    const handleLogin = () => {
-      Alert.alert('Onibus', `Quantidade: ${qtd}\nValor Total: R$ ${totalValue.toFixed(2)}`);
+    const handlePagar = () => {
+      navigation.navigate('Pagamento');
     };
     const handleGoBack = () => {
       navigation.goBack();
@@ -36,7 +36,7 @@ const TicketBus: React.FC = () => {
           keyboardType="numeric"
         />
         <Text style={styles.totalText}>Valor a ser pago: R$ {totalValue.toFixed(2)}</Text>
-        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+        <TouchableOpacity style={styles.button} onPress={handlePagar}>
           <Text style={styles.buttonText}>Pagar</Text>
         </TouchableOpacity>
         </View>

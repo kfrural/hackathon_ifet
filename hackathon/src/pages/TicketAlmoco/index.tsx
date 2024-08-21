@@ -11,9 +11,8 @@ const Refeitorio: React.FC = () => {
 
   const totalValue = parseFloat(qtd) * ticketPrice;
 
-  const handleLogin = () => {
-    // Aqui entra o código para autenticar o usuário
-    Alert.alert('Refeitorio', `Quantidade: ${qtd}\nValor Total: R$ ${totalValue.toFixed(2)}`);
+  const handlePagar = () => {
+    navigation.navigate('Pagamento');
   };
 
   const handleGoBack = () => {
@@ -38,7 +37,7 @@ const Refeitorio: React.FC = () => {
           keyboardType="numeric"
         />
         <Text style={styles.totalText}>Valor a ser pago: R$ {totalValue.toFixed(2)}</Text>
-        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+        <TouchableOpacity style={styles.button} onPress={handlePagar}>
           <Text style={styles.buttonText}>Pagar</Text>
         </TouchableOpacity>
       </View>

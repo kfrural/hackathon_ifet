@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Image, TouchableOpacity, Clipboard, StyleSheet, Dimensions } from 'react-native';
 import styles from './styles';
+import { useNavigation } from "@react-navigation/native";
 
 const PagamentoScreen: React.FC = () => {
   const [link] = useState('https://www.exemplo.com/pagamento'); // Substitua pelo link real
   const [beneficiario] = useState('Nome do Beneficiário'); // Substitua pelo nome real
   const [valor] = useState('R$ 20,00'); // Substitua pelo valor real
+  const navigation = useNavigation();
   
   // Define o tempo de expiração do PIX em segundos
   const [timeLeft, setTimeLeft] = useState(600); // Exemplo: 10 minutos (600 segundos)
@@ -30,9 +32,19 @@ const PagamentoScreen: React.FC = () => {
     await Clipboard.setString(link);
     alert('Link copiado para a área de transferência!');
   };
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity onPress={handleGoBack}>
+        <Image
+          source={require('../../assets/Return.png')}
+          style={styles.img}
+        />
+      </TouchableOpacity>
+      <View style={styles.base}>
       <Text style={styles.title}>Pagamento</Text>
       <Image
         source={require('../../assets/QRCode.webp')}
@@ -48,6 +60,7 @@ const PagamentoScreen: React.FC = () => {
         <View style={[styles.progressBar, { width: `${(timeLeft / 600) * 100}%` }]} />
       </View>
       <Text style={styles.timer}>{formatTime(timeLeft)}</Text>
+      </View>
     </View>
   );
 };
