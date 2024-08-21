@@ -2,17 +2,14 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
 import styles from './styles';
 
-const Refeitorio: React.FC = () => {
+const TicketBus: React.FC = () => {
     const [qtd, setQtd] = useState('');
 
-    // Valor do ticket
     const ticketPrice = 0.90;
   
-    // Calcula o valor total
     const totalValue = parseFloat(qtd) * ticketPrice;
   
     const handleLogin = () => {
-      // Aqui entra o código para autenticar o usuário
       Alert.alert('Onibus', `Quantidade: ${qtd}\nValor Total: R$ ${totalValue.toFixed(2)}`);
     };
   
@@ -34,4 +31,4 @@ const Refeitorio: React.FC = () => {
     );
   };
 
-export default Refeitorio;
+export default TicketBus;
