@@ -2,11 +2,34 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, Alert } from 'react-native';
 import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
+import { supabase } from '../../banco_de_dados/service/supabase'
 
 const Home: React.FC = () => {
   const [matricula, setMatricula] = useState('');
   const [senha, setSenha] = useState('');
+  const [saldoRefeitorio, setSaldoRefeitorio] = useState(0);
+  const [saldoOnibus, setSaldoOnibus] = useState(0);
   const navigation = useNavigation();
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const { data, error } = await supabase
+        .from('usuarios')
+        .select('matricula_do_usuario, saldo_refeitorio, saldo_onibus')
+        .eq('matricula_do_usuario', matricula)  // Compara a matricula para ver se é existente no banco quando user esta logado
+        .single();
+
+      if (error) {
+        console.error('Erro ao buscar dados do usuário:', error);
+      } else {
+        setMatricula(data.matricula);
+        setSaldoRefeitorio(data.saldo_refeitorio);
+        setSaldoOnibus(data.saldo_onibus);
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   const handleRefeitorio = () => {
     navigation.navigate('Refeitorio');
@@ -29,8 +52,8 @@ const Home: React.FC = () => {
       </TouchableOpacity>
 
       <Text style={styles.saldoText}>Saldo:</Text>
-      <Text style={styles.ticketText}>Tickets refeitório: {matricula}</Text>
-      <Text style={styles.ticketText}>Tickets ônibus: {senha}</Text>
+      <Text style={styles.ticketText}>Tickets refeitório: {saldoRefeitorio}</Text>
+      <Text style={styles.ticketText}>Tickets ônibus: {saldoOnibus}</Text>
     </View>
   );
 };
