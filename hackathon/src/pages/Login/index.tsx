@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-//import { supabase } from '../../banco_de_dados/service/supabase';
-//import { useUser } from '../../auth/UserContext';
+import { supabase } from '../../banco_de_dados/service/supabase';
+import { useUser } from '../../auth/UserContext';
 import styles from './styles';
 
 const LoginScreen: React.FC = () => {
   const [matricula, setMatricula] = useState('');
   const [senha, setSenha] = useState('');
   const navigation = useNavigation();
- // const { setUser } = useUser();
+  const { setUser } = useUser();
 
   const handleLogin = async () => {
-    {/*try {
-    } const { data, error } = await supabase
+    try {
+      const { data, error } = await supabase
         .from('usuarios')
         .select('*')
-        .eq('matricula', matricula)
+        .eq('matricula_usuario', matricula)
         .eq('senha', senha)
         .single();
-
+        
       if (error) {
         Alert.alert('Erro', 'Erro ao fazer login: ' + error.message);
         console.error('Erro ao fazer login:', error.message);
@@ -37,7 +37,7 @@ const LoginScreen: React.FC = () => {
     } catch (error) {
       Alert.alert('Erro', 'Erro ao fazer login: ' + error.message);
       console.error('Erro ao fazer login:', error);
-    }*/}
+    }
     navigation.navigate('Home');
   };
 
