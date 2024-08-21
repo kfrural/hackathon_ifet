@@ -12,7 +12,7 @@ const Refeitorio: React.FC = () => {
   const totalValue = parseFloat(qtd) * ticketPrice;
 
   const handlePagar = () => {
-    navigation.navigate('Pagamento');
+    navigation.navigate('Pagamento', { totalValue });
   };
 
   const handleGoBack = () => {

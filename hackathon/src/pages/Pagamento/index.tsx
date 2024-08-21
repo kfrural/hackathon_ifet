@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, TouchableOpacity, Clipboard, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, Image, TouchableOpacity, Clipboard } from 'react-native';
 import styles from './styles';
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 const PagamentoScreen: React.FC = () => {
+  const route = useRoute();
+  const navigation = useNavigation();
+
+  // Recebe o valor do parâmetro
+  const totalValue = route.params?.totalValue ?? 0;
+
   const [link] = useState('https://www.exemplo.com/pagamento'); // Substitua pelo link real
   const [beneficiario] = useState('Nome do Beneficiário'); // Substitua pelo nome real
-  const [valor] = useState('R$ 20,00'); // Substitua pelo valor real
-  const navigation = useNavigation();
-  
-  // Define o tempo de expiração do PIX em segundos
+  const [valor] = useState(totalValue.toFixed(2)); // Usa o valor recebido
   const [timeLeft, setTimeLeft] = useState(600); // Exemplo: 10 minutos (600 segundos)
 
   useEffect(() => {
@@ -32,6 +35,7 @@ const PagamentoScreen: React.FC = () => {
     await Clipboard.setString(link);
     alert('Link copiado para a área de transferência!');
   };
+
   const handleGoBack = () => {
     navigation.goBack();
   };
@@ -45,21 +49,21 @@ const PagamentoScreen: React.FC = () => {
         />
       </TouchableOpacity>
       <View style={styles.base}>
-      <Text style={styles.title}>Pagamento</Text>
-      <Image
-        source={require('../../assets/QRCode.webp')}
-        style={styles.qrCode}
-      />
-      <Text style={styles.link}>{link}</Text>
-      <TouchableOpacity style={styles.copyButton} onPress={copyToClipboard}>
-        <Text style={styles.copyButtonText}>Copiar Link</Text>
-      </TouchableOpacity>
-      <Text style={styles.beneficiario}>Beneficiário: {beneficiario}</Text>
-      <Text style={styles.valor}>Valor: {valor}</Text>
-      <View style={styles.progressContainer}>
-        <View style={[styles.progressBar, { width: `${(timeLeft / 600) * 100}%` }]} />
-      </View>
-      <Text style={styles.timer}>{formatTime(timeLeft)}</Text>
+        <Text style={styles.title}>Pagamento</Text>
+        <Image
+          source={require('../../assets/QRCode.webp')}
+          style={styles.qrCode}
+        />
+        <Text style={styles.link}>{link}</Text>
+        <TouchableOpacity style={styles.copyButton} onPress={copyToClipboard}>
+          <Text style={styles.copyButtonText}>Copiar Link</Text>
+        </TouchableOpacity>
+        <Text style={styles.beneficiario}>Beneficiário: {beneficiario}</Text>
+        <Text style={styles.valor}>Valor: R$ {valor}</Text>
+        <View style={styles.progressContainer}>
+          <View style={[styles.progressBar, { width: `${(timeLeft / 600) * 100}%` }]} />
+        </View>
+        <Text style={styles.timer}>{formatTime(timeLeft)}</Text>
       </View>
     </View>
   );
