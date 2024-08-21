@@ -6,7 +6,7 @@ import Login from '../pages/Login';
 import Home from '../pages/Home';
 import Refeitorio from "../pages/TicketAlmoco";
 import Onibus from '../pages/Onibus';
-import TicketBus from '../pages/ticketBus';
+import TicketBus from '../pages/TicketBus';
 import Horario from '../pages/Horario';
 import Pagamento from '../pages/Pagamento';
 

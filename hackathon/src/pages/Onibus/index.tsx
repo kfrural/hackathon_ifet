@@ -8,34 +8,41 @@ const ViajacaoRioPombaScreen: React.FC = () => {
 
   const handleGoBack = () => {
     navigation.goBack();
-};
+  };
+  const navigateToHorarios = () => {
+    navigation.navigate('Horario');
+  };
+
+  const navigateToRecarga = () => {
+    navigation.navigate('TicketBus');
+  };
 
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={handleGoBack}>
         <Image
-        source={require('../../assets/Return.png')}
-        style={styles.img}
-      />
+          source={require('../../assets/Return.png')}
+          style={styles.img}
+        />
       </TouchableOpacity>
       <View style={styles.base}>
-      <Text style={styles.title}>Viação Rio Pomba</Text>
-      <View style={styles.buttonsContainer}>
-        <TouchableOpacity style={styles.button}>
-        <Image
-        source={require('../../assets/Clock.png')}
-        style={styles.clock}
-      />
-      <Text>Horários</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button}>
-        <Image
-        source={require('../../assets/Card.png')}
-        style={styles.card}
-      />
-      <Text>Recarga</Text>
-        </TouchableOpacity>
-      </View>
+        <Text style={styles.title}>Viação Rio Pomba</Text>
+        <View style={styles.buttonsContainer}>
+          <TouchableOpacity style={styles.button} onPress={navigateToHorarios}>
+            <Image
+              source={require('../../assets/Clock.png')}
+              style={styles.clock}
+            />
+            <Text>Horários</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={navigateToRecarga}>
+            <Image
+              source={require('../../assets/Card.png')}
+              style={styles.card}
+            />
+            <Text>Recarga</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
