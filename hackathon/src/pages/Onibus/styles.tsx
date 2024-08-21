@@ -3,10 +3,30 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#f5f5f5',
     paddingHorizontal: 20,
+  },
+  goBackButton: {
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  img: {
+    height: 45,
+    width: 50,
+    resizeMode: 'contain',
+  },
+  base: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  card: {
+    height: 72,
+    width: 72,
+  },
+  clock: {
+    height: 72,
+    width: 72,
   },
   title: {
     fontSize: 28,

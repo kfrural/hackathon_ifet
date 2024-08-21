@@ -3,17 +3,29 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: '#f5f5f5',
     paddingHorizontal: 20,
+  },
+  goBackButton: {
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  img: {
+    height: 45,
+    width: 50,
+    resizeMode: 'contain',
+  },
+  base: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    marginBottom: 120,
     color: '#333',
     textAlign: 'center',
+    marginBottom: 20,
   },
   input: {
     width: '100%',

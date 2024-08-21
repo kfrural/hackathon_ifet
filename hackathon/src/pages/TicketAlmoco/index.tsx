@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Alert, Image } from 'react-native';
 import styles from './styles';
 import { useNavigation } from "@react-navigation/native";
 
@@ -28,6 +28,7 @@ const Refeitorio: React.FC = () => {
         style={styles.img}
       />
       </TouchableOpacity>
+      <View style={styles.base}>
       <Text style={styles.title}>Refeitorio</Text>
       <TextInput
         style={styles.input}
@@ -40,6 +41,7 @@ const Refeitorio: React.FC = () => {
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Pagar</Text>
       </TouchableOpacity>
+      </View>
     </View>
   );
 };
