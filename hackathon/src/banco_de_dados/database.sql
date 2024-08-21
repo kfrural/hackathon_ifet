@@ -3,7 +3,8 @@ CREATE TABLE Usuarios (
     Nome VARCHAR(100) NOT NULL,
     Matricula VARCHAR(50) UNIQUE NOT NULL,
     Senha_Hash VARCHAR(255) NOT NULL,
-    Saldo_Tickets INT DEFAULT 0 NOT NULL
+    Saldo_Tickets_Almoco INT DEFAULT 0 NOT NULL
+    Saldo_Tickets_Onibus INT DEFAULT 0 NOT NULL
 );
 
 CREATE TABLE Transacoes (
